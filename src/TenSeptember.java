@@ -29,11 +29,28 @@ public class TenSeptember {
         return null;
     }
 
+    public static int maxProfit(int[] prices) {
+        int max = 0;
+        int min = Integer.MAX_VALUE;
+
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < min) {
+                min = prices[i];
+            }
+
+            if (prices[i] - min > max) {
+                max = prices[i] - min;
+            }
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 5, 4, 8, 6, 4};
 
         System.out.println(Arrays.toString(TwoSum(nums, 8)));
         System.out.println(Arrays.toString(TwoSumOptimal(nums, 45)));
+        System.out.println(maxProfit(nums));
 
     }
 }
