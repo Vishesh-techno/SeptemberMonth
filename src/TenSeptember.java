@@ -14,13 +14,13 @@ public class TenSeptember {
         return new int[]{-1, -1};
     }
 
-    public static int[] TwoSumOptimal(int[] nums, int target){
+    public static int[] TwoSumOptimal(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
 
-        for(int i=0; i<nums.length; i++){
+        for (int i = 0; i < nums.length; i++) {
             int requiredNo = target - nums[i];
 
-            if(map.containsKey(requiredNo)){
+            if (map.containsKey(requiredNo)) {
                 return new int[]{i, map.get(requiredNo)};
             }
 
