@@ -32,10 +32,10 @@ public class ElevenSeptember {
         }
     }
 
-    public static boolean containsDuplicate(int[] nums){
+    public static boolean containsDuplicate(int[] nums) {
         Set<Integer> dup = new HashSet<>();
-        for(int num: nums){
-            if(dup.contains(num)){
+        for (int num : nums) {
+            if (dup.contains(num)) {
                 return true;
             }
             dup.add(num);
@@ -43,10 +43,33 @@ public class ElevenSeptember {
         return false;
     }
 
+    public static int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> n1 = new HashSet<>();
+        Set<Integer> n2 = new HashSet<>();
 
+        for (int num : nums1) {
+            n1.add(num);
+        }
+        for (int num : nums2) {
+            n2.add(num);
+        }
+
+        int[] result = new int[Math.min(n1.size(), n2.size())];
+
+        int k = 0;
+
+        for (int num : n1) {
+            if (n2.contains(num)) {
+                result[k] = num;
+                k++;
+            }
+        }
+        return result;
+    }
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 4, 5, 7, 5, 8};
+        int[] nums1 = {3, 4, 4, 5, 5, 8};
 
         int k = removeDuplicates(nums);
         System.out.println("Unique count: " + k);
@@ -56,6 +79,8 @@ public class ElevenSeptember {
         System.out.println("Rotated array: " + Arrays.toString(unique));
 
         System.out.println(containsDuplicate(nums));
+
+        System.out.println(Arrays.toString(intersection(nums, nums1)));
     }
 
 }
