@@ -22,24 +22,24 @@ public class TwelveSeptember {
         int k = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            if(nums[i] != 0){
+            if (nums[i] != 0) {
                 nums[k] = nums[i];
                 k++;
             }
         }
-        while(k < nums.length){
+        while (k < nums.length) {
             nums[k] = 0;
             k++;
         }
     }
 
-    public static int[] twoSum(int[] nums, int target){
+    public static int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
 
-        for(int i = 0; i<nums.length; i++){
+        for (int i = 0; i < nums.length; i++) {
             int requiredNo = target - nums[i];
 
-            if(map.containsKey(requiredNo)){
+            if (map.containsKey(requiredNo)) {
                 return new int[]{i, map.get(requiredNo)};
             }
 
@@ -52,7 +52,7 @@ public class TwelveSeptember {
     public static void main(String[] args) {
         int[] nums = {0};
 
-        int[] arr = {0,1,0,3,12};
+        int[] arr = {0, 1, 0, 3, 12};
 
         System.out.println(Arrays.toString(plusOne(nums)));
 
