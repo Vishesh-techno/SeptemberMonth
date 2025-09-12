@@ -18,6 +18,26 @@ public class TwelveSeptember {
         return result;
     }
 
+    public static int findEvenNumbers(int[] nums) {
+        int ans = 0;
+
+        for (int num : nums) {
+            int count = 0;
+
+            while (num > 0) {
+                num = num / 10;
+                count++;
+            }
+
+            if (count % 2 == 0) {
+                ans++;
+            }
+        }
+
+        return ans;
+
+    }
+
     public static void zeroes(int[] nums) {
         int k = 0;
 
@@ -70,6 +90,8 @@ public class TwelveSeptember {
 
         int[] nums1 = {1, 1, 0, 1, 1, 1};
 
+        int[] arr1 = {1, 1, 2, 3, 12};
+
         System.out.println(Arrays.toString(plusOne(nums)));
 
         zeroes(arr);
@@ -79,5 +101,7 @@ public class TwelveSeptember {
         System.out.println(Arrays.toString(twoSum(arr, 0)));
 
         System.out.println(findMaxConsecutiveOnes(nums1));
+
+        System.out.println(findEvenNumbers(arr1));
     }
 }
