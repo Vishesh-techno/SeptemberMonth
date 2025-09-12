@@ -48,11 +48,27 @@ public class TwelveSeptember {
         return null;
     }
 
+    public static int findMaxConsecutiveOnes(int[] nums) {
+        int count = 0;
+        int max = 0;
+
+        for (int num : nums) {
+            if (num == 1) {
+                count++;
+            } else {
+                max = Math.max(max, count);
+                count = 0;
+            }
+        }
+        return Math.max(count, max);
+    }
 
     public static void main(String[] args) {
         int[] nums = {0};
 
         int[] arr = {0, 1, 0, 3, 12};
+
+        int[] nums1 = {1, 1, 0, 1, 1, 1};
 
         System.out.println(Arrays.toString(plusOne(nums)));
 
@@ -61,5 +77,7 @@ public class TwelveSeptember {
         System.out.println(Arrays.toString(arr));
 
         System.out.println(Arrays.toString(twoSum(arr, 0)));
+
+        System.out.println(findMaxConsecutiveOnes(nums1));
     }
 }
