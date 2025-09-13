@@ -18,6 +18,24 @@ public class ThirteenSeptember {
         return -1;
     }
 
+    public static int minSubArrayLength(int[] nums, int target) {
+
+        int minDistance = Integer.MAX_VALUE;
+
+        for (int i = 0; i < nums.length; i++) {
+            int sum = 0;
+            for (int j = i; j < nums.length; j++) {
+                sum = sum + nums[j];
+
+                if (sum >= target) {
+                    minDistance = Math.min(minDistance, j - i + 1);
+                    break;
+                }
+            }
+        }
+        return minDistance == Integer.MAX_VALUE ? 0 : minDistance;
+    }
+
     public static int dominantIndex(int[] nums) {
         int max = Integer.MIN_VALUE;
         int index = -1;
@@ -46,6 +64,8 @@ public class ThirteenSeptember {
         System.out.println(findPivotIndex(nums));
 
         System.out.println(dominantIndex(nums1));
+
+        System.out.println(minSubArrayLength(nums, 24));
 
     }
 }
