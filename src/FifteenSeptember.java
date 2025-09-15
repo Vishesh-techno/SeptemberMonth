@@ -35,12 +35,28 @@ public class FifteenSeptember {
         System.out.println("null");
     }
 
+    public static ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
 
     public static void main(String[] args) {
         addNode(10);
         addNode(20);
         addNode(30);
         addNode(40);
+
+        print();
+
+        head = reverseList(head);
 
         print();
     }
