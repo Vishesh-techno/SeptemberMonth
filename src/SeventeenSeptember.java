@@ -2,29 +2,63 @@ import java.util.Stack;
 
 public class SeventeenSeptember {
 
-    public static String reverseString(String str){
+    public static String reverseString(String str) {
         Stack<Character> s = new Stack<>();
         int idx = 0;
 
-        while(idx < str.length()){
+        while (idx < str.length()) {
             s.push(str.charAt(idx));
             idx++;
         }
 
         StringBuilder result = new StringBuilder();
-        while(!s.isEmpty()){
+        while (!s.isEmpty()) {
             char curr = s.pop();
             result.append(curr);
         }
         return result.toString();
     }
 
+    public static void pushAtBottom(Stack<Integer> s, int data) {
+        if (s.isEmpty()) {
+            s.push(data);
+            return;
+        }
+        int top = s.pop();
+        pushAtBottom(s, data);
+        s.push(top);
+    }
+
+    //  reverse stack
+    public static void reverseStack(Stack<Integer> s) {
+        if (s.isEmpty()) {
+            return;
+        }
+        int top = s.pop();
+        reverseStack(s);
+        pushAtBottom(s, top);
+    }
+
+    public static void printStack(Stack<Integer> s){
+        while(!s.isEmpty()){
+            System.out.println(s.pop());
+        }
+    }
 
     public static void main(String[] args) {
+
+        Stack<Integer> st = new Stack<>();
+
+        st.push(10);
+        st.push(20);
+        st.push(30);
+
         String s = "Vishesh";
-
         String result = reverseString(s);
+        System.out.println("Reversed String: " + result);
 
-        System.out.println(result);
+        System.out.println("Original Stack: " + st);
+        reverseStack(st);
+        System.out.println("Reversed Stack: " + st);
     }
 }
