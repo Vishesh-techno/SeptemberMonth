@@ -40,10 +40,25 @@ public class SeventeenSeptember2 {
             count[t.charAt(i) - 'a']--;
         }
 
-        for (int i = 0; i < count.length; i++) {
-            if (count[i] != 0) {
+        for (int j : count) {
+            if (j != 0) {
                 return false;
             }
+        }
+        return true;
+    }
+
+    public static boolean isPalindrome(String s) {
+        String s1 = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int start = 0;
+        int end = s1.length() - 1;
+
+        while (start < end) {
+            if (s1.charAt(start) != s1.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
         }
         return true;
     }
@@ -55,6 +70,8 @@ public class SeventeenSeptember2 {
 
         String t = "nagaram";
 
+        String s2 = "A man, a plan, a canal: Panama";
+
         int x = 1534236469;
 
         reverseString(s);
@@ -64,6 +81,8 @@ public class SeventeenSeptember2 {
         System.out.println(reverseInt(x));
 
         System.out.println(isAnagram(s1, t));
+
+        System.out.println(isPalindrome(s2));
 
     }
 }
