@@ -25,8 +25,35 @@ public class SeventeenSeptember2 {
         return (int) rev;
     }
 
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        int[] count = new int[26];
+
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+        }
+
+        for (int i = 0; i < t.length(); i++) {
+            count[t.charAt(i) - 'a']--;
+        }
+
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         char[] s = {'h', 'e', 'l', 'l', 'o'};
+
+        String s1 = "anagram";
+
+        String t = "nagaram";
 
         int x = 1534236469;
 
@@ -35,5 +62,8 @@ public class SeventeenSeptember2 {
         System.out.println(s);
 
         System.out.println(reverseInt(x));
+
+        System.out.println(isAnagram(s1, t));
+
     }
 }
