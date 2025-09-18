@@ -24,7 +24,7 @@ public class EighteenSeptember {
 
     public static void main(String[] args) {
         String hayStack = "Vishesh";
-        String needle = "esh";
+        String needle = "ssh";
 
         System.out.println(strStr(hayStack, needle));
     }
