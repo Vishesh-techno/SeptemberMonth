@@ -127,6 +127,21 @@ public class NineteenSeptember {
         return true;
     }
 
+    public static boolean isCycle(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+
+            if(fast == slow){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public static void main(String[] args) {
         // First sorted list
@@ -156,6 +171,12 @@ public class NineteenSeptember {
             System.out.println("Yes, Merged List is Palindrome");
         } else {
             System.out.println("No, Merged List is Not a Palindrome");
+        }
+
+        if (isCycle(merged)) {
+            System.out.println("Yes, Merged List is Cyclic");
+        } else {
+            System.out.println("No, Merged List is Not a Cyclic");
         }
     }
 
