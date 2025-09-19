@@ -27,7 +27,7 @@ public class NineteenSeptember {
         return head;
     }
 
-    public static void print() {
+    public static void print(ListNode head) {
         ListNode temp = head;
         while (temp != null) {
             System.out.print(temp.data + "==>>");
@@ -49,7 +49,7 @@ public class NineteenSeptember {
         if (sz < n) {
             return head;
         }
-        if(sz == n){
+        if (sz == n) {
             return head.next;
         }
         int i = 0;
@@ -63,20 +63,100 @@ public class NineteenSeptember {
         return head;
     }
 
+    public static ListNode mergeTwoList(ListNode l1, ListNode l2){
+        if(l1 == null){
+            return l2;
+        }else if(l2 == null){
+            return l1;
+        }
+
+        ListNode dummy = new ListNode(0);
+
+        ListNode curr = dummy;
+
+        while(l1 != null && l2 != null){
+            if(l1.data < l2.data){
+                curr.next = l1;
+                curr = l1;
+                l1 = l1.next;
+            }else{
+                curr.next = l2;
+                curr = l2;
+                l2 = l2.next;
+            }
+        }
+        if(l2 == null){
+            curr.next = l1;
+        }else{
+           curr.next = l2;
+        }
+        return dummy.next;
+    }
+
+    public static boolean isPalindrome(ListNode head){
+        if(head == null){
+            return true;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        ListNode prev = null;
+        ListNode curr = slow;
+        ListNode next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        ListNode left = head;
+        ListNode right = prev;
+        while(left != null && right != null){
+            if(left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
 
     public static void main(String[] args) {
-        addNode(10);
-        addNode(20);
-        addNode(30);
-        addNode(40);
-        addNode(60);
-        addNode(50);
-        addNode(60);
+        // First sorted list
+        ListNode l1 = new ListNode(1);
+        l1.next = new ListNode(3);
+        l1.next.next = new ListNode(5);
+        print(l1);
 
-        print();
+        // Second sorted list
+        ListNode l2 = new ListNode(2);
+        l2.next = new ListNode(4);
+        l2.next.next = new ListNode(6);
+        print(l2);
 
-        removeNthNodeFromEnd(head, 3);
+        // Merge both lists
+        ListNode merged = mergeTwoList(l1, l2);
 
-        print();
+        // Print merged list
+        ListNode temp = merged;
+        while (temp != null) {
+            System.out.print(temp.data + "==>>");
+            temp = temp.next;
+        }
+        System.out.println("null");
+
+        if(isPalindrome(merged)){
+            System.out.println("Yes, Merged List is Palindrome");
+        }else{
+            System.out.println("No, Merged List is Not a Palindrome");
+        }
     }
+
 }
