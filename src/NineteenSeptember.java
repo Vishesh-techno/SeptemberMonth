@@ -127,7 +127,7 @@ public class NineteenSeptember {
         return true;
     }
 
-    public static boolean isCycle(ListNode head){
+    public static boolean isCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
 
@@ -135,13 +135,36 @@ public class NineteenSeptember {
             fast = fast.next.next;
             slow = slow.next;
 
-            if(fast == slow){
+            if (fast == slow) {
                 return true;
             }
         }
         return false;
     }
 
+    public static ListNode isCycleII(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+
+            if (fast == slow) {
+                break;
+            }
+        }
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+
+        slow = head;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
 
     public static void main(String[] args) {
         // First sorted list
@@ -167,14 +190,28 @@ public class NineteenSeptember {
         }
         System.out.println("null");
 
+        ListNode last = merged;
+        while (last.next != null) {
+            last = last.next;
+        }
+        last.next = merged.next.next;
+
         if (isPalindrome(merged)) {
             System.out.println("Yes, Merged List is Palindrome");
         } else {
             System.out.println("No, Merged List is Not a Palindrome");
         }
 
+//        if (isCycle(merged)) {
+//            System.out.println("Yes, Merged List is Cyclic");
+//        } else {
+//            System.out.println("No, Merged List is Not a Cyclic");
+//        }
+
         if (isCycle(merged)) {
             System.out.println("Yes, Merged List is Cyclic");
+            ListNode cycleStart = isCycleII(merged);
+            System.out.println("Cycle starts at node with value: " + cycleStart.data);
         } else {
             System.out.println("No, Merged List is Not a Cyclic");
         }
