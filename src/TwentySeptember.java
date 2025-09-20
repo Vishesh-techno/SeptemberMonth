@@ -19,7 +19,7 @@ public class TwentySeptember {
             return head;
         }
 
-       ListNode temp = head;
+        ListNode temp = head;
         while (temp.next != null) {
             temp = temp.next;
         }
@@ -36,17 +36,18 @@ public class TwentySeptember {
         System.out.println("null");
     }
 
-    public static ListNode removeElements(ListNode head, int val){
+    public static ListNode removeElements(ListNode head, int val) {
         ListNode temp = head;
-        while(temp != null){
-            if(temp.next != null && temp.next.data == val){
+        while (temp != null) {
+            if (temp.next != null && temp.next.data == val) {
                 temp.next = temp.next.next;
-            }else{
+            } else {
                 temp = temp.next;
             }
         }
         return head;
     }
+
     public static void main(String[] args) {
 
         ListNode l1 = new ListNode(1);
