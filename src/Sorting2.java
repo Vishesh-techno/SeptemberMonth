@@ -37,13 +37,6 @@ public class Sorting2 {
         }
     }
 
-    public static void printArray(int[] nums) {
-        for (int num : nums) {
-            System.out.print(num + "==>");
-        }
-        System.out.println("null");
-    }
-
     public static void countingSort(int[] nums) {
         int largest = Integer.MIN_VALUE;
         for (int num : nums) {
@@ -63,6 +56,13 @@ public class Sorting2 {
                 count[i]--;
             }
         }
+    }
+
+    public static void printArray(int[] nums) {
+        for (int num : nums) {
+            System.out.print(num + "==>");
+        }
+        System.out.println("null");
     }
 
     public static void main(String[] args) {
