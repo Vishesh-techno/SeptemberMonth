@@ -11,11 +11,11 @@ public class Sorting2 {
         }
     }
 
-    public static void selectionSort(int[] nums){
-        for(int i=0; i<nums.length-1; i++){
+    public static void selectionSort(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
             int max = i;
-            for(int j=i+1; j<nums.length; j++){
-                if(nums[j] > nums[max]){
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] > nums[max]) {
                     max = j;
                 }
             }
@@ -25,11 +25,11 @@ public class Sorting2 {
         }
     }
 
-    public static void insertionSort(int[] nums){
-        for(int i=1; i<nums.length; i++){
+    public static void insertionSort(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
             int curr = nums[i];
             int prev = i - 1;
-            while(prev >= 0 && nums[prev] < curr){
+            while (prev >= 0 && nums[prev] < curr) {
                 nums[prev + 1] = nums[prev];
                 prev--;
             }
@@ -44,20 +44,20 @@ public class Sorting2 {
         System.out.println("null");
     }
 
-    public static void countingSort(int[] nums){
+    public static void countingSort(int[] nums) {
         int largest = Integer.MIN_VALUE;
-        for(int num : nums){
+        for (int num : nums) {
             largest = Math.max(num, largest);
         }
 
         int[] count = new int[largest + 1];
-        for(int i=0; i<nums.length; i++){
+        for (int i = 0; i < nums.length; i++) {
             count[nums[i]]++;
         }
 
-        int j=0;
-        for(int i = count.length - 1; i >= 0; i--){
-            while(count[i] > 0){
+        int j = 0;
+        for (int i = count.length - 1; i >= 0; i--) {
+            while (count[i] > 0) {
                 nums[j] = i;
                 j++;
                 count[i]--;
