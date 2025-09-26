@@ -36,7 +36,7 @@ public class TwentySixSeptember {
         System.out.println("null");
     }
 
-    public ListNode insertionSortList(ListNode head) {
+    public static ListNode insertionSortList(ListNode head) {
         ListNode curr = head;
         ListNode dummy = new ListNode(0);
 
@@ -58,7 +58,15 @@ public class TwentySixSeptember {
     }
 
     public static void main(String[] args) {
+        ListNode data = addNode(-1);
+        addNode(5);
+        addNode(3);
+        addNode(0);
+        addNode(4);
+        print(data);
 
+        insertionSortList(data);
 
+        print(data);
     }
 }
