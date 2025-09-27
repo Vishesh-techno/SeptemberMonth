@@ -63,17 +63,28 @@ public class TwentySevenSeptember {
         }
     }
 
-//    public static int majorityElements(int[] nums) {
-//
-//    }
+    public static int majorityElements(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            int curr = nums[i];
+            int prev = i - 1;
+            while (prev >= 0 && nums[prev] > curr) {
+                nums[prev + 1] = nums[prev];
+                prev--;
+            }
+            nums[prev + 1] = curr;
+        }
+        return nums[nums.length / 2];
+    }
 
     public static void main(String[] args) {
-        int[] nums1 = {1, 2, 3, 0, 0, 0};
+        int[] nums1 = {1, 1, 1, 0, 0, 0};
 
-        int[] nums2 = {2, 5, 6};
+        int[] nums2 = {1, 5, 6};
 
         merge(nums1, 3, nums2, 3);
 
         System.out.println(Arrays.toString(nums1));
+
+        System.out.println(majorityElements(nums1));
     }
 }
