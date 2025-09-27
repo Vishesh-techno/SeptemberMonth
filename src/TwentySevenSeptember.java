@@ -11,25 +11,61 @@ public class TwentySevenSeptember {
             sorted[m + i] = nums2[i];
         }
 
-        int largest = Integer.MIN_VALUE;
-        for (int i = 0; i < sorted.length; i++) {
-            largest = Math.max(largest, sorted[i]);
-        }
+//      Counting sort
 
-        int[] count = new int[largest + 1];
-        for (int i = 0; i < sorted.length; i++) {
-            count[sorted[i]]++;
-        }
+//        int largest = Integer.MIN_VALUE;
+//        for (int i = 0; i < sorted.length; i++) {
+//            largest = Math.max(largest, sorted[i]);
+//        }
+//
+//        int[] count = new int[largest + 1];
+//        for (int i = 0; i < sorted.length; i++) {
+//            count[sorted[i]]++;
+//        }
+//
+//        int j = 0;
+//        for (int i = 0; i < count.length; i++) {
+//            while (count[i] > 0) {
+//                sorted[j] = i;
+//                j++;
+//                count[i]--;
+//            }
+//        }
 
-        int j = 0;
-        for (int i = 0; i < count.length; i++) {
-            while (count[i] > 0) {
-                sorted[j] = i;
-                j++;
-                count[i]--;
+//        Selection Sort
+//        for (int i = 0; i < sorted.length - 1; i++) {
+//            int maxIndex = i;
+//            for (int j = i+1; j < sorted.length; j++) {
+//                if (sorted[j] < sorted[maxIndex]) {
+//                    maxIndex = j;
+//                }
+//            }
+//            int temp = sorted[i];
+//            sorted[i] = sorted[maxIndex];
+//            sorted[maxIndex] = temp;
+//        }
+
+//        Insertion Sort
+
+        for (int i = 1; i < sorted.length - 1; i++) {
+            int curr = sorted[i];
+            int prev = i - 1;
+
+            while (prev >= 0 && sorted[prev] > curr) {
+                sorted[prev + 1] = sorted[prev];
+                prev--;
             }
+            sorted[prev + 1] = curr;
+        }
+
+        for (int i = 0; i < m + n; i++) {
+            nums1[i] = sorted[i];
         }
     }
+
+//    public static int majorityElements(int[] nums) {
+//
+//    }
 
     public static void main(String[] args) {
         int[] nums1 = {1, 2, 3, 0, 0, 0};
